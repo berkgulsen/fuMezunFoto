@@ -15,9 +15,13 @@ return new class extends Migration
     {
         Schema::create('meslekyuksekokul', function (Blueprint $table) {
             $table->id();
-            $table->integer('meslekyuksekokul_id');
+            $table->unsignedBigInteger('meslekyuksekokul_id');
             $table->string('meslekyuksekokul_name');
             $table->timestamps();
+
+            $table->foreign('meslekyuksekokul_id')
+                  ->references('id')
+                  ->on('akademi');
         });
     }
 
