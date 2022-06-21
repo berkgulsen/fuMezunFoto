@@ -27,7 +27,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['auth','isAdmin'])->group(function (){
     Route::get('dashboard', [FrontendController::class,'index']);
-    Route::get('/admin-panel', [FrontendController::class,'panel']);
-    Route::get('/admin-listele', [FrontendController::class,'list']);
-    Route::post('admin-ekle', [AdminController::class,'insert']);
+    Route::get('foto-ekle-akademik', [FrontendController::class,'fotoIndex']);
+    Route::get('foto-ekle-tarih', [FrontendController::class,'fotoList']);
+    Route::get('/admin-listele', [AdminController::class,'list']);
+    Route::get('/admin-ekle', [FrontendController::class,'list']);
+    Route::post('/admin-ekle-onay', [AdminController::class,'insert']);
+    Route::get('admin-düzenle/{id}', [AdminController::class, 'edit']);
+    Route::put('admin-güncelle/{id}', [AdminController::class, 'update']);
+    Route::get('admin-sil/{id}', [AdminController::class, 'delete']);
 });

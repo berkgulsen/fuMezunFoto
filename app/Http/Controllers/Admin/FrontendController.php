@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
@@ -11,10 +12,18 @@ class FrontendController extends Controller
     public function index(){
         return view('admin.index');
     }
-    public function panel(){
+
+    public function fotoIndex(){
         return view('admin.foto.index');
     }
+
     public function list(){
-        return view('admin.list');
+        $user = User::all();
+        return view('admin.super.add',compact('user'));
     }
+
+    public function listFoto(){
+        return view('admin.add.index');
+    }
+
 }

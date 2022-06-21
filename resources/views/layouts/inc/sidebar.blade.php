@@ -4,10 +4,13 @@
 
       Tip 2: you can also add an image using data-image tag
   -->
+    <div class="logo"><a href="{{url('dashboard')}}" class="simple-text logo-normal">
+            DASHBOARD
+        </a></div>
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="nav-item active  ">
-                <a class="nav-link" href="{{url('dashboard')}}">
+                <a class="nav-link" href="{{url('foto-ekle')}}">
                     <i class="material-icons">dashboard</i>
                     <p>Fotoğraf Ekle</p>
                 </a>
