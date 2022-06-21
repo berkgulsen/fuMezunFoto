@@ -18,9 +18,7 @@ class EnstituSeeder extends Seeder
         $enstituler=['Eğitim Bilimleri','Sağlık Bilimleri','Sosyal Bilimler','Fen Bilimleri'];
         $count=0;
         foreach ($enstituler as $enstitu){
-            $count++;
             DB::table('enstitu')->insert([
-                'enstitu_id'=>$count,
                 'enstitu_name'=>$enstitu,
                 'akademi_id'=>2,
                 'created_at'=>now(),

@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('enstitu', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('enstitu_id');
             $table->string('enstitu_name');
             $table->unsignedBigInteger('akademi_id');
             $table->timestamps();
