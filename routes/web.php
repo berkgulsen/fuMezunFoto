@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\adminController;
 use App\Http\Controllers\Admin\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,4 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['auth','isAdmin'])->group(function (){
     Route::get('dashboard', [FrontendController::class,'index']);
+    Route::get('/admin-panel', [FrontendController::class,'panel']);
+    Route::get('/admin-listele', [FrontendController::class,'list']);
+    Route::post('admin-ekle', [AdminController::class,'insert']);
 });
