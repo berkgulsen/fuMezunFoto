@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('enstitu_id');
             $table->string('enstitu_name');
+            $table->unsignedBigInteger('akademi_id');
             $table->timestamps();
 
-            $table->foreign('enstitu_id')
+            $table->foreign('akademi_id')
                   ->references('id')
                   ->on('akademi');
         });
