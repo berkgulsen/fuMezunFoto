@@ -18,9 +18,7 @@ class MeslekYuksekokulSeeder extends Seeder
         $meslekyuksekokullar=['Baskil','Elazığ Organize Sanayi Bölgesi','Karakoçan','Keban','Kovancılar','Sağlık Hizmetleri','Sivrice','Sosyal Bilimler','Teknik Bilimler'];
         $count=0;
         foreach ($meslekyuksekokullar as $meslekyuksekokul){
-            $count++;
             DB::table('meslekyuksekokul')->insert([
-                'meslekyuksekokul_id'=>$count,
                 'meslekyuksekokul_name'=>$meslekyuksekokul,
                 'akademi_id'=>4,
                 'created_at'=>now(),

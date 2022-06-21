@@ -18,9 +18,7 @@ class YuksekokulSeeder extends Seeder
         $yuksekokullar=['Yabancı Diller','Devlet Konservatuarı','Sivil Havacılık'];
         $count=0;
         foreach ($yuksekokullar as $yuksekokul){
-            $count++;
             DB::table('yuksekokul')->insert([
-                'yuksekokul_id'=>$count,
                 'yuksekokul_name'=>$yuksekokul,
                 'akademi_id'=>3,
                 'created_at'=>now(),
