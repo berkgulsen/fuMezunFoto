@@ -4,33 +4,24 @@
 
       Tip 2: you can also add an image using data-image tag
   -->
-    <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
-            E TİCARET
-        </a></div>
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="nav-item active  ">
                 <a class="nav-link" href="{{url('dashboard')}}">
                     <i class="material-icons">dashboard</i>
-                    <p>Dashboard</p>
+                    <p>Fotoğraf Ekle</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{{url('admin-listele')}}">
+                    <i class="material-icons">person</i>
+                    <p>Admin Listele</p>
                 </a>
             </li>
             <li class="nav-item ">
                 <a class="nav-link" href="{{url('categories')}}">
                     <i class="material-icons">person</i>
-                    <p>Categories</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="{{url('add-category')}}">
-                    <i class="material-icons">person</i>
-                    <p>Add Item</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="./tables.html">
-                    <i class="material-icons">content_paste</i>
-                    <p>Table List</p>
+                    <p>TEST</p>
                 </a>
             </li>
         </ul>
