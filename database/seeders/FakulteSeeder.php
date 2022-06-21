@@ -15,8 +15,8 @@ class FakulteSeeder extends Seeder
      */
     public function run()
     {
+
         $fakulteler=['Diş Hekimliği','Eczacılık','Eğitim','Fen','İnsani ve Sosyal Bilimler','İktisadi ve İdari Bilimler','İlahiyat','İletişim','Mimarlık','Mühendislik','Sağlık Bilimleri','Su Ürünleri','Spor Bilimleri','Teknoloji','Teknik Eğitim','Tıp','Veteriner'];
-        $count=0;
         foreach ($fakulteler as $fakulte){
             DB::table('fakulte')->insert([
                 'fakulte_name'=>$fakulte,

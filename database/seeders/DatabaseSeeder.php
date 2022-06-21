@@ -26,5 +26,10 @@ class DatabaseSeeder extends Seeder
         $this->call(EnstituSeeder::class);
         $this->call(YuksekokulSeeder::class);
         $this->call(MeslekYuksekokulSeeder::class);
+
+        $this->call(FakulteAltSeeder::class);
+        $this->call(EnstituAltSeeder::class);
+        $this->call(YuksekokulAltSeeder::class);
+        $this->call(MeslekYuksekokulAltSeeder::class);
     }
 }
