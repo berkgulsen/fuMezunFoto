@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('imagePath', function (Blueprint $table) {
+        Schema::create('image_paths', function (Blueprint $table) {
             $table->id();
-            $table->string('imagePath');
+            $table->string('imagePath')->default(NULL);
             $table->timestamps();
         });
     }

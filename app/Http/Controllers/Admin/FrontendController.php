@@ -17,6 +17,10 @@ class FrontendController extends Controller
         return view('admin.foto.index');
     }
 
+    public function adminIndex(){
+        return view('admin.admin.index');
+    }
+
     public function list(){
         $user = User::all();
         return view('admin.super.add',compact('user'));

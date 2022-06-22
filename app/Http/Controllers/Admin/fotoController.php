@@ -3,27 +3,42 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ImagePath;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
 class fotoController extends Controller
 {
     public function insert(Request $request){
-        $foto = new foto();
-        while($request->hasFile('image')){
+        $imagePath = new ImagePath();
+        $akademi = $request->akademi;
+        $subAkademi = $request->subAkademi;
+        $bolum = $request->bolum;
+        $tarih = $request->tarih;
+        $i = 1;
+        while($files=$request->file('image')){
+            $k = 0;
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
-            $filename = time().'.'.$ext;
-            $file->move('assets/uploads', $filename);
-            $foto->image = $filename;
+            $filename = $akademi.$subAkademi.$bolum.$tarih.str_pad($i, 4, '0', STR_PAD_LEFT).'.'.$ext;
+            $path =  'uploads'.$filename;
+            while($k == 0){
+                if(File::exists($path)){
+                    $i++;
+                }else{
+                    $file->move('uploads', $filename);
+                    $imagePath->imagePath = $filename;
+                    $imagePath->save();
+                    $k = 1;
+                }
+            }
         }
-        $foto->save();
+
         return redirect('admin-listele')->with('status',"Foto eklendi!");
     }
 
-    public function edit($id){
-        $foto = foto::find($id);
-        return view('admin.category.edit', compact('foto'));
+    public function edit(){
+        return view('admin.foto.add');
     }
 
     public function update(Request $request, $id){

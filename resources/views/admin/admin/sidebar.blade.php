@@ -15,18 +15,6 @@
                     <p>Fotoğraf Ekle</p>
                 </a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="{{url('admin-listele')}}">
-                    <i class="material-icons">person</i>
-                    <p>Admin Listele</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="{{url('categories')}}">
-                    <i class="material-icons">person</i>
-                    <p>TEST</p>
-                </a>
-            </li>
         </ul>
     </div>
 </div>

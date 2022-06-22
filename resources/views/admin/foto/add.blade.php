@@ -6,23 +6,25 @@
 
         </div>
         <div class="card-body">
-            <form action="{{url('insert-category')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{url('/foto-ekle-onay')}}" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="">Yıl
-                            <input type="text" class="form_control" name="name">
-                        </label>
-                    </div>
-                    <div class="col-md-12">
-                        <input type="file" class="form_control" name="image">
-                    </div>
-                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
+                <label for="">akademi
+                    <input type="text" class="form_control" name="akademi">
+                </label>
+                <label for="">subAkademi
+                    <input type="text" class="form_control" name="subAkademi">
+                </label>
+                <label for="">bolum
+                    <input type="text" class="form_control" name="bolum">
+                </label>
+                <label for="">tarih
+                    <input type="text" class="form_control" name="tarih">
+                </label>
+                <div class="col-md-12">
+                    <input type="file" class="form_control" name="image" multiple>
                 </div>
+                <input type="submit" value="Upload">
             </form>
-
         </div>
     </div>
 @endsection

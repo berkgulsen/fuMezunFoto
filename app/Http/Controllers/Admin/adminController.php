@@ -13,7 +13,7 @@ class adminController extends Controller
         $user = new user();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = bcrypt($request->password);
         $user->save();
         return redirect('admin-listele')->with('status',"Admin eklendi!");
     }
@@ -31,7 +31,7 @@ class adminController extends Controller
         $user = user::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = bcrypt($request->password);
         $user->update();
         return redirect('dashboard')->with('status',"Admin güncellendi!");
     }
