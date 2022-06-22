@@ -19,7 +19,7 @@ class AkademiSeeder extends Seeder
         $count=0;
         foreach ($akademiler as $akademi){
             $count++;
-            DB::table('akademi')->insert([
+            DB::table('akademis')->insert([
                 'akademi_id'=>$count,
                 'akademi_name'=>$akademi,
                 'created_at'=>now(),

@@ -21,7 +21,7 @@ return new class extends Migration
 
             $table->foreign('akademi_id')
                   ->references('id')
-                  ->on('akademi');
+                  ->on('akademis');
         });
     }
 
