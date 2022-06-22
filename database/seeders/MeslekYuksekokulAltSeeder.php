@@ -31,7 +31,7 @@ class MeslekYuksekokulAltSeeder extends Seeder
         foreach ($bolumler as $bolum){
             DB::table('meslekYuksekOkulAlt')->insert([
                 'bolum_name'=>$bolum,
-                'meslekYuksekokul_id'=>1,
+                'meslekYuksekokul_id'=>2,
                 'created_at'=>now(),
                 'updated_at'=>now()
             ]);
@@ -42,7 +42,7 @@ class MeslekYuksekokulAltSeeder extends Seeder
         foreach ($bolumler as $bolum){
             DB::table('meslekYuksekOkulAlt')->insert([
                 'bolum_name'=>$bolum,
-                'meslekYuksekokul_id'=>1,
+                'meslekYuksekokul_id'=>3,
                 'created_at'=>now(),
                 'updated_at'=>now()
             ]);
@@ -53,7 +53,7 @@ class MeslekYuksekokulAltSeeder extends Seeder
         foreach ($bolumler as $bolum){
             DB::table('meslekYuksekOkulAlt')->insert([
                 'bolum_name'=>$bolum,
-                'meslekYuksekokul_id'=>1,
+                'meslekYuksekokul_id'=>4,
                 'created_at'=>now(),
                 'updated_at'=>now()
             ]);
@@ -64,7 +64,7 @@ class MeslekYuksekokulAltSeeder extends Seeder
         foreach ($bolumler as $bolum){
             DB::table('meslekYuksekOkulAlt')->insert([
                 'bolum_name'=>$bolum,
-                'meslekYuksekokul_id'=>1,
+                'meslekYuksekokul_id'=>5,
                 'created_at'=>now(),
                 'updated_at'=>now()
             ]);
@@ -75,7 +75,7 @@ class MeslekYuksekokulAltSeeder extends Seeder
         foreach ($bolumler as $bolum){
             DB::table('meslekYuksekOkulAlt')->insert([
                 'bolum_name'=>$bolum,
-                'meslekYuksekokul_id'=>1,
+                'meslekYuksekokul_id'=>6,
                 'created_at'=>now(),
                 'updated_at'=>now()
             ]);
@@ -86,7 +86,7 @@ class MeslekYuksekokulAltSeeder extends Seeder
         foreach ($bolumler as $bolum){
             DB::table('meslekYuksekOkulAlt')->insert([
                 'bolum_name'=>$bolum,
-                'meslekYuksekokul_id'=>1,
+                'meslekYuksekokul_id'=>7,
                 'created_at'=>now(),
                 'updated_at'=>now()
             ]);
@@ -97,7 +97,7 @@ class MeslekYuksekokulAltSeeder extends Seeder
         foreach ($bolumler as $bolum){
             DB::table('meslekYuksekOkulAlt')->insert([
                 'bolum_name'=>$bolum,
-                'meslekYuksekokul_id'=>1,
+                'meslekYuksekokul_id'=>8,
                 'created_at'=>now(),
                 'updated_at'=>now()
             ]);
@@ -108,7 +108,7 @@ class MeslekYuksekokulAltSeeder extends Seeder
         foreach ($bolumler as $bolum){
             DB::table('meslekYuksekOkulAlt')->insert([
                 'bolum_name'=>$bolum,
-                'meslekYuksekokul_id'=>1,
+                'meslekYuksekokul_id'=>9,
                 'created_at'=>now(),
                 'updated_at'=>now()
             ]);
