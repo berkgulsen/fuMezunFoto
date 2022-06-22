@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('enstitu', function (Blueprint $table) {
+        Schema::create('department', function (Blueprint $table) {
             $table->id();
-            $table->string('enstitu_name');
-            $table->unsignedBigInteger('akademi_id');
+            $table->string('department_name');
+            $table->unsignedBigInteger('sub_id');
             $table->timestamps();
 
-            $table->foreign('akademi_id')
-                  ->references('id')
-                  ->on('akademis');
+            $table->foreign('sub_id')
+                ->references('id')
+                ->on('sub');
         });
     }
 
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enstitu');
+        Schema::dropIfExists('Department');
     }
 };

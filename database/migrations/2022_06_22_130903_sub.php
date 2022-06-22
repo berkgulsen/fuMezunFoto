@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('meslekyuksekokul', function (Blueprint $table) {
+        Schema::create('sub', function (Blueprint $table) {
             $table->id();
-            $table->string('meslekyuksekokul_name');
+            $table->string('sub_name');
             $table->unsignedBigInteger('akademi_id');
             $table->timestamps();
 
             $table->foreign('akademi_id')
-                  ->references('id')
-                  ->on('akademis');
+                ->references('id')
+                ->on('akademis');
         });
     }
 
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meslekyuksekokul');
+        Schema::dropIfExists('sub');
     }
 };

@@ -21,15 +21,17 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call(AkademiSeeder::class);
-        $this->call(UserSeeder::class);
-        $this->call(FakulteSeeder::class);
-        $this->call(EnstituSeeder::class);
-        $this->call(YuksekokulSeeder::class);
-        $this->call(MeslekYuksekokulSeeder::class);
+        //$this->call(UserSeeder::class);
+        //$this->call(FakulteSeeder::class);
+        //$this->call(EnstituSeeder::class);
+        //$this->call(YuksekokulSeeder::class);
+        //$this->call(MeslekYuksekokulSeeder::class);
+        $this->call(SubSeeder::class);
 
-        $this->call(FakulteAltSeeder::class);
-        $this->call(EnstituAltSeeder::class);
-        $this->call(YuksekokulAltSeeder::class);
-        $this->call(MeslekYuksekokulAltSeeder::class);
+        //$this->call(FakulteAltSeeder::class);
+        //$this->call(EnstituAltSeeder::class);
+        //$this->call(YuksekokulAltSeeder::class);
+        //$this->call(MeslekYuksekokulAltSeeder::class);
+        $this->call(DepartmentSeeder::class);
     }
 }
