@@ -22,6 +22,8 @@ Route::get('/', function () {
 });
 
 Route::get('/homepage','App\Http\Controllers\front\HomepageController@index')->name('homepage');
+Route::post('/homepage/list','App\Http\Controllers\front\HomepageController@show')->name('homepage.list');
+Route::get('subDepartment',[adminController::class,'getSub'])->name('subs');
 
 Auth::routes();
 
@@ -42,6 +44,5 @@ Route::middleware(['auth','isAdmin'])->group(function (){
     Route::get('admin-sil/{id}', [AdminController::class, 'delete']);
     Route::get('foto-ekle', [FotoController::class, 'edit']);
     Route::post('/foto-ekle-onay', [FotoController::class,'insert']);
-    Route::get('subDepartment',[adminController::class,'getSub'])->name('subs');
 
 });

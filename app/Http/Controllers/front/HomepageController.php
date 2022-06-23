@@ -13,4 +13,10 @@ class HomepageController extends Controller
         //dd($data);
         return view('front.homepage',$data);
     }
+
+    public function  show(Request $request){
+        //dd($request);
+        return view('front.homepagelist');
+
+    }
 }
