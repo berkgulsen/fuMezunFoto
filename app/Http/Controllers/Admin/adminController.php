@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Akademi;
+use App\Models\Department;
+use App\Models\Fakulte;
+use App\Models\Sub;
 use App\Models\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -42,4 +46,14 @@ class adminController extends Controller
         return redirect('admin-listele')->with('status',"Admin silindi!");
     }
 
+    public function getSub(Request $request){
+        $id=$request->id;
+        $subs=Sub::where('akademi_id',$id)->get();
+        return response()->json(['response' => $subs]);
+    }
+    public function getDepartment(Request $request){
+        $id=$request->id;
+        $departments=Department::where('sub_id',$id)->get();
+        return response()->json(['response' => $departments]);
+    }
 }

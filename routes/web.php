@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Admin\adminController;
-use App\Http\Controllers\Admin\fotoController;
 use App\Http\Controllers\Admin\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,9 +21,13 @@ Route::get('/', function () {
     //sasa
 });
 
+Route::get('/homepage','App\Http\Controllers\front\HomepageController@index')->name('homepage');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('department',[adminController::class,'getDepartment'])->name('departments');
+
 
 Route::middleware(['auth','isAdmin'])->group(function (){
     Route::get('dashboard', [FrontendController::class,'index']);
@@ -39,5 +42,6 @@ Route::middleware(['auth','isAdmin'])->group(function (){
     Route::get('admin-sil/{id}', [AdminController::class, 'delete']);
     Route::get('foto-ekle', [FotoController::class, 'edit']);
     Route::post('/foto-ekle-onay', [FotoController::class,'insert']);
-});
+    Route::get('subDepartment',[adminController::class,'getSub'])->name('subs');
 
+});
