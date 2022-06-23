@@ -7,33 +7,29 @@ use App\Models\ImagePath;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class fotoController extends Controller
+class  fotoController extends Controller
 {
-    public function insert(Request $request){
-        $imagePath = new ImagePath();
+    public function insert(Request $request)
+    {
         $akademi = $request->akademi;
         $subAkademi = $request->subAkademi;
         $bolum = $request->bolum;
         $tarih = $request->tarih;
         $i = 1;
-        while($files=$request->file('image')){
-            $k = 0;
-            $file = $request->file('image');
-            $ext = $file->getClientOriginalExtension();
-            $filename = $akademi.$subAkademi.$bolum.$tarih.str_pad($i, 4, '0', STR_PAD_LEFT).'.'.$ext;
-            $path =  'uploads'.$filename;
-            while($k == 0){
-                if(File::exists($path)){
+        if ($request->file('image')) {
+            $destinationPath = 'uploads/';
+            foreach ($request->file('image') as $image) {
+                do {
+                    $filename = str_pad($akademi, 2, '0', STR_PAD_LEFT) . str_pad($subAkademi, 2, '0', STR_PAD_LEFT) . str_pad($bolum, 2, '0', STR_PAD_LEFT) . str_pad($tarih, 4, '0', STR_PAD_LEFT) . str_pad($i, 4, '0', STR_PAD_LEFT);
+                    $fileCheck = $destinationPath.$filename . '.' . 'png';
                     $i++;
-                }else{
-                    $file->move('uploads', $filename);
-                    $imagePath->imagePath = $filename;
-                    $imagePath->save();
-                    $k = 1;
-                }
+                }while(file_exists(public_path($fileCheck)));
+                $image->move($destinationPath, $filename . '.' . 'png');
+                $imagePath = new ImagePath();
+                $imagePath->imagePath = $filename;
+                $imagePath->save();
             }
         }
-
         return redirect('admin-listele')->with('status',"Foto eklendi!");
     }
 

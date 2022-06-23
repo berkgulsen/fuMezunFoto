@@ -13,7 +13,7 @@
                     </div>
                     <ul>
                         <li>
-                            <a target="_blank" href="{{url('foto-ekle')}}" style="pointer-events: all;">
+                            <a href="{{url('foto-ekle')}}" style="pointer-events: all;">
                                 <i class="fa fa-chevron-right"></i>Diş Hekimliği Fakültesi
                             </a>
                         </li>

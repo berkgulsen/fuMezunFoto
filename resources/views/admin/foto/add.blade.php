@@ -21,7 +21,7 @@
                     <input type="text" class="form_control" name="tarih">
                 </label>
                 <div class="col-md-12">
-                    <input type="file" class="form_control" name="image" multiple>
+                    <input type="file" class="form_control" name="image[]" multiple>
                 </div>
                 <input type="submit" value="Upload">
             </form>
