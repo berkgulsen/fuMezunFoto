@@ -23,9 +23,13 @@ class AdminMiddleware
             {
                 return $next($request);
             }
-            else
+            else if(Auth::user()->role_as == 0)
             {
                 return redirect('/admin-panel');
+            }
+            else
+            {
+                return redirect('/home');
             }
         }
         else

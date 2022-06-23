@@ -16,12 +16,11 @@
     <!-- Styles -->
     <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/material-dashboard.css') }}" rel="stylesheet">
-
 </head>
 <body class="g-sidenav-show  bg-gray-200">
 
 <div class="wrapper">
-    @include('layouts.inc.sidebar')
+    @include('admin.admin.sidebar')
     <div class="main-panel">
         @include('layouts.inc.adminnav')
         <div class="content">
