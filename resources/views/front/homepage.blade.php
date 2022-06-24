@@ -45,9 +45,9 @@
             <label for="mezuniyetYili" class="col-4 col-form-label">Mezuniyet Yılı</label>
             <div class="col-8">
                 <select id="mezuniyetYili" name="mezuniyetYili" class="custom-select">
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
+                    @foreach($years as $year)
+                        <option value="{{$year->id}}">{{$year->year}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
