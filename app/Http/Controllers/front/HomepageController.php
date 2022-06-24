@@ -23,7 +23,6 @@ class HomepageController extends Controller
                                 ->whereSub_id($request->sub)
                                 ->whereDepartment_id($request->department)
                                 ->whereYear_id($request->mezuniyetYili)->get();
-        dd($data['fotos']);
         return view('front.homepagelist',compact('request','data'));
     }
 }
