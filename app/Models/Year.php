@@ -10,8 +10,5 @@ class Year extends Model
     use HasFactory;
     protected $table='year';
 
-    public function getYear(){
-        return $this->hasOne(Year::class,'year_id','id');
-    }
 
 }

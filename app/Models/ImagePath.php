@@ -14,4 +14,9 @@ class ImagePath extends Model
         'imagePath',
     ];
 
+
+    public function getYear(){
+        return $this->hasOne(Year::class,'year_id','id');
+    }
+
 }
