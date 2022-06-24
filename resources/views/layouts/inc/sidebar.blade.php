@@ -9,22 +9,25 @@
         </a></div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item active  ">
+            <li class="nav-item @if(Request::segment(1)=='foto-ekle-akademik') active @endif">
                 <a class="nav-link" href="{{url('foto-ekle-akademik')}}">
                     <i class="material-icons">dashboard</i>
                     <p>Fotoğraf Ekle</p>
                 </a>
             </li>
-            <li class="nav-item ">
+            @if(auth()->user()->role_as == 1)
+            <li class="nav-item @if(Request::segment(1)=='admin-listele') active @endif ">
                 <a class="nav-link" href="{{url('admin-listele')}}">
                     <i class="material-icons">person</i>
                     <p>Admin Listele</p>
                 </a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="{{url('categories')}}">
-                    <i class="material-icons">person</i>
-                    <p>TEST</p>
+            @endif
+            <li class="nav-item @if(Request::segment(1)=='kullanıcı-bilgi') active @endif">
+
+                <a class="nav-link" href="{{url('kullanıcı-bilgi/'.auth()->user()->id)}}">
+                    <i class="material-icons">settings</i>
+                    <p>Kullanıcı Bilgileri</p>
                 </a>
             </li>
         </ul>

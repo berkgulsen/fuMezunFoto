@@ -44,7 +44,7 @@ Route::middleware(['foto'])->group(function (){
     Route::get('foto-ekle-tarih', [FrontendController::class,'fotoList']);
     Route::get('foto-ekle', [FotoController::class, 'edit']);
     Route::post('/foto-ekle-onay', [FotoController::class,'insert']);
-    Route::get('kullanıcı-bilgi', [FotoController::class, 'userEdit']);
+    Route::get('kullanıcı-bilgi/{id}', [FotoController::class, 'userEdit']);
     Route::post('kullanıcı-bilgi-güncelle/{id}', [FotoController::class,'userUpdate']);
 
 });

@@ -21,7 +21,7 @@ class  fotoController extends Controller
             $destinationPath = 'uploads/';
             foreach ($request->file('image') as $image) {
                 do {
-                    $filename = str_pad($akademi, 2, '0', STR_PAD_LEFT) . str_pad($subAkademi, 2, '0', STR_PAD_LEFT) . str_pad($bolum, 2, '0', STR_PAD_LEFT) . str_pad($tarih, 4, '0', STR_PAD_LEFT) . str_pad($i, 4, '0', STR_PAD_LEFT);
+                    $filename = str_pad($akademi, 2, '0', STR_PAD_LEFT) . str_pad($subAkademi, 2, '0', STR_PAD_LEFT) . str_pad($bolum, 3, '0', STR_PAD_LEFT) . str_pad($tarih, 4, '0', STR_PAD_LEFT) . str_pad($i, 4, '0', STR_PAD_LEFT);
                     $fileCheck = $destinationPath.$filename . '.' . 'png';
                     $i++;
                 }while(file_exists(public_path($fileCheck)));

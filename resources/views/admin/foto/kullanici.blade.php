@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="">Şifre
-                            <input type="text" value="{{$user->password}}" class="form_control" name="password">
+                            <input type="text" value="" class="form_control" name="password">
                         </label>
                     </div>
                     <div class="col-md-12">
