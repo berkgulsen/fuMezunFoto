@@ -29,7 +29,9 @@
             <label for="sub" class="col-4 col-form-label">Sub</label>
             <div class="col-8">
                 <select id="sub" name="sub" class="custom-select">
-
+                    @foreach($subs as $akademi)
+                        <option value="{{$akademi->id}}">{{$akademi->sub_name}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
@@ -37,7 +39,9 @@
             <label for="department" class="col-4 col-form-label">Bölüm</label>
             <div class="col-8">
                 <select id="department" name="department" class="custom-select">
-
+                    @foreach($departments as $akademi)
+                        <option value="{{$akademi->id}}">{{$akademi->department_name}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
