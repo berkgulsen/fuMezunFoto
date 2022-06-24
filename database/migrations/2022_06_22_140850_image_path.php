@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('akademi_id');
             $table->unsignedBigInteger('sub_id');
             $table->unsignedBigInteger('department_id');
+            $table->unsignedBigInteger('year_id');
             $table->timestamps();
 
             $table->foreign('akademi_id')
@@ -32,6 +33,10 @@ return new class extends Migration
             $table->foreign('department_id')
                   ->references('id')
                   ->on('department');
+
+            $table->foreign('year_id')
+                  ->references('id')
+                  ->on('year');
         });
     }
 
