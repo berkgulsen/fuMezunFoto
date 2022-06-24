@@ -15,26 +15,13 @@ class AdminMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
-    {
-        if(Auth::check())
-        {
-            if(Auth::user()->role_as == 1)
-            {
-                return $next($request);
-            }
-            else if(Auth::user()->role_as == 0)
-            {
-                return redirect('/admin-panel');
-            }
-            else
-            {
-                return redirect('/home');
-            }
-        }
-        else
-        {
-            return redirect('/home')->with('status','Please Login First');
-        }
+    public function handle($request, Closure $next, String $isAdmin) {
+        if (!Auth::check()) // This isnt necessary, it should be part of your 'auth' middleware
+            return redirect('/home');
+
+        $user = Auth::user();
+        if($user->role_as == $isAdmin)
+            return $next($request);
+        abort(403);
     }
 }

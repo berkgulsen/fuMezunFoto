@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\File;
 
 class adminController extends Controller
 {
+    public function index(){
+        return view('admin.index');
+    }
+
     public function insert(Request $request){
         $user = new user();
         $user->name = $request->name;

@@ -9,9 +9,6 @@ use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
-    public function index(){
-        return view('admin.index');
-    }
 
     public function fotoIndex(){
         return view('admin.foto.index');

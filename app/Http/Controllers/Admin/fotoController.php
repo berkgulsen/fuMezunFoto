@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ImagePath;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -64,4 +65,19 @@ class  fotoController extends Controller
         $foto->delete();
         return redirect('categories')->with('status',"Item deleted!");
     }
+
+    public function userEdit($id){
+        $user = user::find($id);
+        return view('admin.foto.kullanici', compact('user'));
+    }
+
+    public function userUpdate(Request $request, $id){
+        $user = user::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->update();
+        return redirect('dashboard')->with('status',"Admin güncellendi!");
+    }
+
 }
