@@ -4,6 +4,7 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Akademi;
+use App\Models\ImagePath;
 use Illuminate\Http\Request;
 
 class HomepageController extends Controller
@@ -16,7 +17,10 @@ class HomepageController extends Controller
 
     public function  show(Request $request){
         //dd($request);
-        return view('front.homepagelist');
-
+        $data['fotos']=ImagePath::whereAkademi_id($request->akademi)
+                                ->whereSub_id($request->sub)
+                                ->whereDepartment_id($request->department)->get();
+        dd($data['fotos']);
+        return view('front.homepagelist',compact('request','data'));
     }
 }

@@ -19,17 +19,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-    //sasa
 });
 
 Route::get('/homepage','App\Http\Controllers\front\HomepageController@index')->name('homepage');
-Route::post('/homepage/list','App\Http\Controllers\front\HomepageController@show')->name('homepage.list');
+Route::post('/homepage/list','App\Http\Controllers\front\HomepageController@show')->name('homepagepost');
+
 Route::get('subDepartment',[adminController::class,'getSub'])->name('subs');
+Route::get('department',[adminController::class,'getDepartment'])->name('departments');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('department',[adminController::class,'getDepartment'])->name('departments');
 
 Route::middleware(['isAdmin:0'])->group(function (){
     Route::get('admin-panel', [FrontendController::class,'adminIndex']);

@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ImagePath extends Model
 {
     use HasFactory;
+    protected $table='imagePath';
+
     protected $fillable = [
         'imagePath',
     ];

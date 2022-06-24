@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,55 +9,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-<div class="container px-5 my-5"><!--
-    <form method="POST" id="contactForm" data-sb-form-api-token="API_TOKEN" action="{{route('homepage.list')}}" class="mb-3">
-        @csrf
-        <div class="mb-3">
-            <label class="form-label" for="">Akademi</label>
-            <select class="form-select" id="akademi" aria-label="">
-                <option></option>
-            @foreach($akademis as $akademi)
-                <option value="{{$akademi->id}}">{{$akademi->akademi_name}}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="mb-3" id="akademiSub">
-            <label class="form-label" for="newField3">Sub</label>
-            <select class="form-select" id="sub" aria-label="New Field 3">
-
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="newField5">Bölüm</label>
-            <select class="form-select" id="department" aria-label="New Field 5">
-
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="mezuniyetYili">Mezuniyet Yılı</label>
-            <select class="form-select" id="mezuniyetYili" aria-label="Mezuniyet Yılı">
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-                <option value="2024">2024</option>
-            </select>
-        </div>
-        <div class="d-none" id="submitSuccessMessage">
-            <div class="text-center mb-3">
-                <div class="fw-bolder">Form submission successful!</div>
-                </div>
-        </div>
-        <div class="d-none" id="submitErrorMessage">
-            <div class="text-center text-danger mb-3">Error sending message!</div>
-        </div>
-        <div class="d-grid">
-            <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button>
-        </div>
-    </form>
--->
+<div class="container px-5 my-5">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <form method="POST" id="contactForm" data-sb-form-api-token="API_TOKEN" action="{{route('homepage.list')}}" class="mb-3">
+    <form method="POST" id="contactForm" data-sb-form-api-token="API_TOKEN" action="{{route('homepagepost')}}" class="mb-3">
         @csrf
         <div class="form-group row">
             <label for="akademi" class="col-4 col-form-label">Akademi</label>
@@ -73,7 +29,7 @@
             <label for="sub" class="col-4 col-form-label">Sub</label>
             <div class="col-8">
                 <select id="sub" name="sub" class="custom-select">
-                    <option value="rabbit">Rabbit</option>
+
                 </select>
             </div>
         </div>
@@ -81,7 +37,7 @@
             <label for="department" class="col-4 col-form-label">Bölüm</label>
             <div class="col-8">
                 <select id="department" name="department" class="custom-select">
-                    <option value="rabbit">Rabbit</option>
+
                 </select>
             </div>
         </div>
@@ -149,4 +105,3 @@
 </script>
 </body>
 </html>
-
