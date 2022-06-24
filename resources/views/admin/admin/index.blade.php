@@ -20,7 +20,7 @@
 <body class="g-sidenav-show  bg-gray-200">
 
 <div class="wrapper">
-    @include('admin.admin.sidebar')
+    @include('layouts.inc.sidebar')
     <div class="main-panel">
         @include('layouts.inc.adminnav')
         <div class="content">
