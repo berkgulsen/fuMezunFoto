@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Akademi;
 use App\Models\User;
+use App\Models\Year;
 use Illuminate\Http\Request;
 
 
@@ -11,7 +13,9 @@ class FrontendController extends Controller
 {
 
     public function fotoIndex(){
-        return view('admin.foto.index');
+        $data['akademis']=Akademi::first()->get();
+        $data['years']=Year::first()->get();
+        return view('admin.foto.index',$data);
     }
 
     public function adminIndex(){

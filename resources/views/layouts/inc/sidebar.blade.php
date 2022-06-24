@@ -9,9 +9,16 @@
         </a></div>
     <div class="sidebar-wrapper">
         <ul class="nav">
+            <li class="nav-item @if(Request::segment(1)=='homepage') active @endif">
+
+                <a class="nav-link" href="{{url('homepage')}}">
+                    <i class="material-icons">dashboard2</i>
+                    <p>Anasayfa</p>
+                </a>
+            </li>
             <li class="nav-item @if(Request::segment(1)=='foto-ekle-akademik') active @endif">
                 <a class="nav-link" href="{{url('foto-ekle-akademik')}}">
-                    <i class="material-icons">dashboard</i>
+                    <i class="material-icons">face</i>
                     <p>Fotoğraf Ekle</p>
                 </a>
             </li>

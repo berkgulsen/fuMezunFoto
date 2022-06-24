@@ -33,16 +33,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['isAdmin:0'])->group(function (){
     Route::get('admin-panel', [FrontendController::class,'adminIndex']);
-    Route::get('foto-ekle-akademik', [FrontendController::class,'fotoIndex']);
-    Route::get('foto-ekle-tarih', [FrontendController::class,'fotoList']);
-    Route::get('foto-ekle', [FotoController::class, 'edit']);
-    Route::post('/foto-ekle-onay', [FotoController::class,'insert']);
 });
 
 Route::middleware(['foto'])->group(function (){
     Route::get('foto-ekle-akademik', [FrontendController::class,'fotoIndex']);
-    Route::get('foto-ekle-tarih', [FrontendController::class,'fotoList']);
-    Route::get('foto-ekle', [FotoController::class, 'edit']);
+//    Route::get('foto-ekle-tarih', [FrontendController::class,'fotoList']);
+    Route::post('foto-ekle', [FotoController::class, 'edit']);
     Route::post('/foto-ekle-onay', [FotoController::class,'insert']);
     Route::get('kullanıcı-bilgi/{id}', [FotoController::class, 'userEdit']);
     Route::post('kullanıcı-bilgi-güncelle/{id}', [FotoController::class,'userUpdate']);

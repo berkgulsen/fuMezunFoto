@@ -1,4 +1,4 @@
-<!doctype html>
+    <!doctype html>
 <html lang="tr">
 <head>
     <meta charset="utf-8">
@@ -10,12 +10,8 @@
 @foreach($data['fotos'] as $foto)
 
     <div class="card" style="width: 18rem;">
-    <img src="{{$foto->imagePath+'.png'}}" class="card-img-top" alt="">
+    <img src="{{asset('uploads/'.$foto->imagePath.'.png')}}" class="card-img-top" alt="resim">
     <div class="card-body">
-        <p class="card-text">{{$request->akademi}}</p>
-        <p class="card-text">{{$request->sub}}</p>
-        <p class="card-text">{{$request->department}}</p>
-        <p class="card-text">{{$request->mezuniyetYili}}</p>
     </div>
 </div>
 @endforeach
