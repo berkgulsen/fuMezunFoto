@@ -21,8 +21,7 @@ class HomepageController extends Controller
         //dd($request);
         $data['fotos']=ImagePath::whereAkademi_id($request->akademi)
                                 ->whereSub_id($request->sub)
-                                ->whereDepartment_id($request->department)
-                                ->whereYear_id($request->mezuniyetYili->getYear())->get();
+                                ->whereDepartment_id($request->department)->get();
         dd($data['fotos']);
         return view('front.homepagelist',compact('request','data'));
     }
