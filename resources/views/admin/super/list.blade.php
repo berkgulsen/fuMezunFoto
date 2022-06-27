@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card">
-        <a href="{{url('admin-ekle')}}" class="btn btn-primary">Admin ekle</a>
+        <a href="{{url('admin-ekle')}}" title="Admin Ekle" class="btn btn-primary">Admin ekle</a>
         <div class="card-body">
             <table class="table table-bordered table-striped">
                 <thead>
@@ -19,8 +19,8 @@
                         <td>{{$list->email}}</td>
                         <td>{{$list->password}}</td>
                         <td>
-                            <a href="{{url('admin-düzenle/'.$list->id)}}" class="btn btn-primary">Güncelle</a>
-                            <a href="{{url('admin-sil/'.$list->id)}}" class="btn btn-danger">Sil</a>
+                            <a href="{{url('admin-düzenle/'.$list->id)}}" title="Güncelle" class="btn btn-primary">Güncelle</a>
+                            <a href="{{url('admin-sil/'.$list->id)}}" title="Sil" class="btn btn-danger">Sil</a>
                         </td>
                     </tr>
                 @endforeach

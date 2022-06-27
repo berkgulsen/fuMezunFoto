@@ -31,7 +31,7 @@
         </td>
         <td>Otto</td>
         <td>
-            <a href="" title="Görüntüle" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+            <a href="{{route('foto-single',[$foto->id])}}" title="Görüntüle" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
             <a href="" title="Düzenle" class="btn btn-sm btn-primary"><i class="fa fa-pen"></i></a>
             <a href="{{url('foto-delete/'.$foto->id)}}" title="Sil" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a>
         </td>

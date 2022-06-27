@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Akademi;
 use App\Models\Department;
+use App\Models\ImagePath;
 use App\Models\Sub;
 use App\Models\User;
 use App\Models\Year;
@@ -39,6 +40,11 @@ class FrontendController extends Controller
         $data['subs']=Sub::where('akademi_id',1)->get();
         $data['departments']=Department::where('sub_id',1)->get();
         return view('admin.foto.delete',$data);
+    }
+
+    public function fotoSingle($id){
+        $data['foto']=ImagePath::whereId($id)->get()->first();
+        return view('admin.foto.single',$data);
     }
 
 }
