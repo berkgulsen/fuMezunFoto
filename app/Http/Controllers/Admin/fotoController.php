@@ -19,7 +19,7 @@ class  fotoController extends Controller
         $tarih = $request->mezuniyetYili;
         $i = 1; $c = 0; $v = 0;
         if ($request->file('image')) {
-            $destinationPath = 'uploads/';
+            $destinationPath = 'assets/uploads/';
             foreach ($request->file('image') as $image) {
                 $bool = 0;
                 $size = File::size($image);
@@ -29,7 +29,7 @@ class  fotoController extends Controller
                 }
                 do {
                     $filename = str_pad($akademi, 2, '0', STR_PAD_LEFT) . str_pad($subAkademi, 2, '0', STR_PAD_LEFT) . str_pad($bolum, 3, '0', STR_PAD_LEFT) . str_pad($tarih, 4, '0', STR_PAD_LEFT) . str_pad($i, 4, '0', STR_PAD_LEFT);
-                    $fileCheck = $destinationPath.$filename . '.' . 'png';
+                    $fileCheck = $destinationPath.$filename.'.png';
                     $i++;
                 }while(file_exists(public_path($fileCheck)));
                 if($bool==1){
@@ -40,7 +40,7 @@ class  fotoController extends Controller
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     });
-                    $image->save($destinationPath. $filename . '.' . 'png');
+                    $image->save($destinationPath.$filename.'.png');
                     $imagePath = new ImagePath();
                     $imagePath->imagePath = $filename;
                     $imagePath->akademi_id = $request->akademi;
@@ -55,8 +55,46 @@ class  fotoController extends Controller
         return redirect('foto-ekle-akademik')->with('status',$v."Foto eklendi!  ". $c. "Foto eklenemedi, dosya boyutu çok büyük!");
     }
 
-    public function edit(){
-        return view('admin.foto.add');
+    public function edit(Request $request,$id){
+        $id = ImagePath::find($id);
+        $akademi = $id->akademi_id;
+        $subAkademi = $id->sub_id;
+        $bolum = $id->department_id;
+        $tarih = $id->year_id;
+        $image = $request->image;
+        $filename = $id->imagePath;
+        if ($image) {
+                $bool = 0;
+                $size = File::size($image);
+                $size = $size / 1000000;
+                if ($size > 1) {
+                    $bool = 1;
+                }
+                if ($bool == 1) {
+                  return redirect('/foto-sil-onay')->with('status', "foto düzenlenemedi, eklenen fotonun boyutu 1mbden fazla!");
+                } else {
+                        $path = 'assets/uploads/'.$filename.'.png';
+                        if (File::exists($path)) {
+                            File::delete($path);
+                        }
+                    $id->delete();
+                    $image = Image::make($image);
+                    $image->resize(400, 400, function ($constraint) {
+                        $constraint->aspectRatio();
+                        $constraint->upsize();
+                    });
+                    $image->save($path);
+                    $imagePath = new ImagePath();
+                    $imagePath->imagePath = $filename;
+                    $imagePath->akademi_id = $akademi;
+                    $imagePath->sub_id = $subAkademi;
+                    $imagePath->department_id = $bolum;
+                    $imagePath->year_id = $tarih;
+                    $imagePath->save();
+                }
+
+        }
+       return redirect('/foto-sil')->with('status',"foto düzenlendi!");
     }
 
     public function  show(Request $request){
@@ -70,12 +108,10 @@ class  fotoController extends Controller
 
     public function delete($id){
         $foto = ImagePath::find($id);
-        while($foto->image){
-            $path = 'assests/uploads/'.$foto->imagePath.'png';
+            $path = 'assets/uploads/'.$foto->imagePath.'.png';
             if(File::exists($path)){
                 File::delete($path);
             }
-        }
         $foto->delete();
         return redirect('/foto-sil')->with('status',"foto silindi!");
     }

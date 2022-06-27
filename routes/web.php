@@ -40,7 +40,7 @@ Route::middleware(['foto'])->group(function (){
     Route::get('foto-sil', [FrontendController::class,'fotoDelete'])->name('foto-sil');
     Route::post('/foto-sil-onay', [FotoController::class,'show']);
     Route::get('foto-single/{id}', [FrontendController::class,'fotoSingle'])->name('foto-single');
-//    Route::get('foto-ekle', [FotoController::class, 'edit']);
+    Route::post('foto-edit/{id}', [FotoController::class, 'edit']);
     Route::get('foto-delete/{id}', [FotoController::class,'delete']);
     Route::post('/foto-ekle-onay', [FotoController::class,'insert']);
     Route::get('kullanıcı-bilgi/{id}', [FotoController::class, 'userEdit']);

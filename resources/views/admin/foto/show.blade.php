@@ -10,6 +10,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fotoğraflar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("desc");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+
 </head>
 <body>
 @if((count($data['fotos']))>0)
@@ -27,13 +39,20 @@
     <tr>
         <th scope="row"></th>
         <td>
-            <img src="{{asset('uploads/'.$foto->imagePath.'.png')}}"  width="150px" alt="resim">
+            <img src="{{asset('assets/uploads/'.$foto->imagePath.'.png')}}"  width="150px" alt="resim">
         </td>
         <td>Otto</td>
         <td>
             <a href="{{route('foto-single',[$foto->id])}}" title="Görüntüle" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
-            <a href="" title="Düzenle" class="btn btn-sm btn-primary"><i class="fa fa-pen"></i></a>
+            <button onclick="myFunction()" title="Düzenle" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></button>
             <a href="{{url('foto-delete/'.$foto->id)}}" title="Sil" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a>
+            <form id="desc" action="{{url('foto-edit/'.$foto->id)}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="col-md-12">
+                    <input type="file" class="form_control" name="image">
+                </div>
+                <input type="submit" value="Upload">
+            </form>
         </td>
     </tr>
     @endforeach
