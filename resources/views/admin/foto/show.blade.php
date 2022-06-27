@@ -31,9 +31,9 @@
         </td>
         <td>Otto</td>
         <td>
-            <a href="" target="_blank" title="Görüntüle" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+            <a href="" title="Görüntüle" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
             <a href="" title="Düzenle" class="btn btn-sm btn-primary"><i class="fa fa-pen"></i></a>
-            <a href="" title="Sil" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a>
+            <a href="{{url('foto-delete/'.$foto->id)}}" title="Sil" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a>
         </td>
     </tr>
     @endforeach

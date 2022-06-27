@@ -71,13 +71,13 @@ class  fotoController extends Controller
     public function delete($id){
         $foto = ImagePath::find($id);
         while($foto->image){
-            $path = 'assests/uploads/'.$foto->image;
+            $path = 'assests/uploads/'.$foto->imagePath.'png';
             if(File::exists($path)){
                 File::delete($path);
             }
         }
         $foto->delete();
-        return redirect('categories')->with('status',"Item deleted!");
+        return redirect('/foto-sil')->with('status',"foto silindi!");
     }
 
     public function userEdit($id){

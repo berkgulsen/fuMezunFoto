@@ -39,7 +39,8 @@ Route::middleware(['foto'])->group(function (){
     Route::get('foto-ekle-akademik', [FrontendController::class,'fotoIndex']);
     Route::get('foto-sil', [FrontendController::class,'fotoDelete'])->name('foto-sil');
     Route::post('/foto-sil-onay', [FotoController::class,'show']);
-    Route::post('foto-ekle', [FotoController::class, 'edit']);
+//    Route::get('foto-ekle', [FotoController::class, 'edit']);
+    Route::get('foto-delete/{id}', [FotoController::class,'delete']);
     Route::post('/foto-ekle-onay', [FotoController::class,'insert']);
     Route::get('kullanıcı-bilgi/{id}', [FotoController::class, 'userEdit']);
     Route::post('kullanıcı-bilgi-güncelle/{id}', [FotoController::class,'userUpdate']);
