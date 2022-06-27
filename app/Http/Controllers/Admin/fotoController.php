@@ -59,10 +59,19 @@ class  fotoController extends Controller
         return view('admin.foto.add');
     }
 
+    public function  show(Request $request){
+        //dd($request);
+        $data['fotos']=ImagePath::whereAkademi_id($request->akademi)
+            ->whereSub_id($request->sub)
+            ->whereDepartment_id($request->department)
+            ->whereYear_id($request->mezuniyetYili)->get();
+        return view('admin.foto.show',compact('request','data'));
+    }
+
     public function delete($id){
-        $foto = foto::find($id);
+        $foto = ImagePath::find($id);
         while($foto->image){
-            $path = 'assests/uploads/category/'.$foto->image;
+            $path = 'assests/uploads/'.$foto->image;
             if(File::exists($path)){
                 File::delete($path);
             }

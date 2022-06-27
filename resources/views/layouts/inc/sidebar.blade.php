@@ -4,22 +4,21 @@
 
       Tip 2: you can also add an image using data-image tag
   -->
-    <div class="logo"><a href="{{url('homepage')}}" class="simple-text logo-normal">
+    <div class="logo"><a href="{{url('dashboard')}}" class="simple-text logo-normal">
             DASHBOARD
         </a></div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item @if(Request::segment(1)=='homepage') active @endif">
-
-                <a class="nav-link" href="{{url('homepage')}}">
-                    <i class="material-icons">dashboard2</i>
-                    <p>Anasayfa</p>
-                </a>
-            </li>
             <li class="nav-item @if(Request::segment(1)=='foto-ekle-akademik') active @endif">
                 <a class="nav-link" href="{{url('foto-ekle-akademik')}}">
                     <i class="material-icons">face</i>
                     <p>Fotoğraf Ekle</p>
+                </a>
+            </li>
+            <li class="nav-item @if(Request::segment(1)=='foto-sil') active @endif">
+                <a class="nav-link" href="{{url('foto-sil')}}">
+                    <i class="material-icons">face</i>
+                    <p>Fotoğraf Sil</p>
                 </a>
             </li>
             @if(auth()->user()->role_as == 1)
@@ -35,6 +34,12 @@
                 <a class="nav-link" href="{{url('kullanıcı-bilgi/'.auth()->user()->id)}}">
                     <i class="material-icons">settings</i>
                     <p>Kullanıcı Bilgileri</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{{url('homepage')}}">
+                    <i class="material-icons">dashboard2</i>
+                    <p>Siteyi Görüntüle</p>
                 </a>
             </li>
         </ul>
