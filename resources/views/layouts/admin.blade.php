@@ -30,7 +30,6 @@
         @include('layouts.inc.adminfooter')
     </div>
 </div>
-{{\Illuminate\Support\Facades\Auth::user()}}
 
 <!-- Scripts -->
 <!--   Core JS Files   -->
