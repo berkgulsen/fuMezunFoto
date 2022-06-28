@@ -19,7 +19,7 @@ class  fotoController extends Controller
         $tarih = $request->mezuniyetYili;
         $i = 1; $c = 0; $v = 0;
         if ($request->file('image')) {
-            $destinationPath = 'assets/uploads/';
+            $destinationPath = 'uploads/';
             foreach ($request->file('image') as $image) {
                 $bool = 0;
                 $size = File::size($image);
@@ -73,7 +73,7 @@ class  fotoController extends Controller
                 if ($bool == 1) {
                   return redirect('/foto-sil-onay')->with('status', "foto düzenlenemedi, eklenen fotonun boyutu 1mbden fazla!");
                 } else {
-                        $path = 'assets/uploads/'.$filename.'.png';
+                        $path = 'uploads/'.$filename.'.png';
                         if (File::exists($path)) {
                             File::delete($path);
                         }
@@ -108,7 +108,7 @@ class  fotoController extends Controller
 
     public function delete($id){
         $foto = ImagePath::find($id);
-            $path = 'assets/uploads/'.$foto->imagePath.'.png';
+            $path = 'uploads/'.$foto->imagePath.'.png';
             if(File::exists($path)){
                 File::delete($path);
             }
