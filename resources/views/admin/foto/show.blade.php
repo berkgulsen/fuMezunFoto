@@ -40,7 +40,7 @@
     <tr>
         <th scope="row"></th>
         <td>
-            <img src="{{asset('/uploads/'.$foto->imagePath.'.png')}}"  width="150px" alt="resim">
+            <img src="{{asset('/uploads/'.$foto->imagePath.'.jpg')}}"  width="150px" alt="resim">
         </td>
         <td>Otto</td>
         <td>

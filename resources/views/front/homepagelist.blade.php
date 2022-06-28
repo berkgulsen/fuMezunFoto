@@ -11,7 +11,7 @@
 @if((count($data['fotos']))>0)
     @foreach($data['fotos'] as $foto)
         <div class="card" style="width: 18rem;">
-            <img src="{{asset('uploads/'.$foto->imagePath.'.png')}}" class="card-img-top" alt="resim">
+            <img src="{{asset('uploads/'.$foto->imagePath.'.jpg')}}" class="card-img-top" alt="resim">
             <div class="card-body">
             </div>
         </div>
