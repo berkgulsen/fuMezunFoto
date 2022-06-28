@@ -65,10 +65,9 @@
                                 <div class="col-md-12">
                                     <input type="file" class="form_control" name="image">
                                 </div>
-                                <input type="submit" value="Upload">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
                             <button type="submimt" value="Upload" class="btn btn-primary">Yükle</button>
                         </div>
                     </div>
