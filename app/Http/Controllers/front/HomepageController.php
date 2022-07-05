@@ -12,11 +12,14 @@ use Illuminate\Http\Request;
 
 class HomepageController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         $data['akademis']=Akademi::first()->get();
         $data['subs']=Sub::where('akademi_id',1)->get();
         $data['departments']=Department::where('sub_id',1)->get();
         $data['years']=Year::first()->get();
+        $data['fotos'] = $request->has('akademi')
+            ? ImagePath::where('akademi_id', $request->akademi)->get()
+            : [];
         //dd($data);
         return view('front.homepage',$data);
     }
@@ -28,5 +31,11 @@ class HomepageController extends Controller
                                 ->whereDepartment_id($request->department)
                                 ->whereYear_id($request->mezuniyetYili)->get();
         return view('front.homepagelist',compact('request','data'));
+    }
+
+    public function store(Request $request)
+    {
+        // This will return all request data to your screen.
+        return $request->all();
     }
 }

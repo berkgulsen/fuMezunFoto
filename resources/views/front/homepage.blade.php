@@ -7,6 +7,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 </head>
 <body>
 <div class="container px-5 my-5">
@@ -49,6 +52,7 @@
             <label for="mezuniyetYili" class="col-4 col-form-label">Mezuniyet Yılı</label>
             <div class="col-8">
                 <select id="mezuniyetYili" name="mezuniyetYili" class="custom-select">
+                    <option selected  disabled>Seçiniz</option>
                     @foreach($years as $year)
                         <option value="{{$year->id}}">{{$year->year}}</option>
                     @endforeach
@@ -62,6 +66,9 @@
         </div>
     </form>
 </div>
+<div id="foto">
+
+</div >
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script>
@@ -104,6 +111,24 @@
            }
        });
 
+   });
+
+   $('#mezuniyetYili')[0].addEventListener("change", function(){
+       var yilid = $(this).find(':selected')[0].value;
+       var depid = $('#department').find(':selected')[0].value;
+       $.ajax({
+           type:'GET',
+           url:'{{route('fotos')}}',
+           data:{'yilid':yilid,'depid':depid},
+
+           success:function(response){
+               var foto = document.getElementById('foto');
+               $(foto).empty();
+               for (var i = 0; i < response.response.length; i++) {
+                   $(foto).append('<div  class="card mb-3" style="width: 18rem;"> <div class="card-body"> <img src=uploads/' + response.response[i].imagePath + '.jpg class="card-img-top" alt="resim"> </div> </div>');
+               }
+           }
+       });
    });
 
 </script>

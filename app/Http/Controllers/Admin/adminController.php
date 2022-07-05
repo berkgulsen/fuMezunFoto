@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Akademi;
 use App\Models\Department;
 use App\Models\Fakulte;
+use App\Models\ImagePath;
 use App\Models\Sub;
 use App\Models\user;
 use Illuminate\Http\Request;
@@ -59,5 +60,10 @@ class adminController extends Controller
         $id=$request->id;
         $departments=Department::where('sub_id',$id)->get();
         return response()->json(['response' => $departments]);
+    }
+    public function getFotos(Request $request){                     //urlnin bizi yönlendirdiği fonksiyon ve parantez içinde olanlar da fonksiyonun istediği değişkenler
+        $fotos=ImagePath::whereDepartment_id($request->depid)       //filtreleme işlemlerini yapıp fotos değişkenine sonucu atıyoruz
+                        ->whereYear_id($request->yilid)->get();
+        return response()->json(['response' => $fotos]);            //filtreleme sonrası asıl sayfamıza fotoğrafları geri döndürüyoruz
     }
 }

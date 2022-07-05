@@ -42,6 +42,7 @@
                     <label for="mezuniyetYili" class="col-4 col-form-label">Mezuniyet Yılı</label>
                     <div class="col-8">
                         <select id="mezuniyetYili" name="mezuniyetYili" class="custom-select">
+                            <option selected  disabled>Seçiniz</option>
                             @foreach($years as $year)
                                 <option value="{{$year->id}}">{{$year->year}}</option>
                             @endforeach
@@ -55,6 +56,22 @@
                 </div>
             </form>
         </div>
+
+        <div >
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Fotoğraf</th>
+                    <th scope="col">İşlemler</th>
+                </tr>
+                </thead>
+                <?php $count = 0 ?>
+                <tbody id="foto">
+
+                </tbody>
+            </table>
+        </div >
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
         <script>
@@ -93,7 +110,61 @@
                 });
             });
 
+            $('#mezuniyetYili')[0].addEventListener("change", function(){
+                var yilid = $(this).find(':selected')[0].value;
+                var depid = $('#department').find(':selected')[0].value;
+                $.ajax({
+                    type:'GET',
+                    url:'{{route('fotos')}}',
+                    data:{'yilid':yilid,'depid':depid},
+
+                    success:function(response){
+                        var foto = document.getElementById('foto');
+                        $(foto).empty();
+                        for (var i = 0; i < response.response.length; i++) {
+                            $(foto).append('<tr>' +
+                                '<th scope="row"></th>' +
+                                '<td>' +
+                                '<img src=uploads/'+ response.response[i].imagePath + '.jpg width="150px" alt="resim">' +
+                                '</td>' +
+                                '<td>' +
+                                '<a href="foto-single/' + response.response[i].id + '"title="Görüntüle" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>' +
+                                '<button type="button" title="Düzenle" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal' + i + '"><i class="fa fa-edit"></i></button>' +
+                                '<div class="modal fade" id="myModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
+                                '<div class="modal-dialog" role="document">' +
+                                '<form id="desc" action=foto-edit/' + response.response[i].id + ' method="post" enctype="multipart/form-data">' +
+                                '<div class="modal-content">' +
+                                '<div class="modal-header">' +
+                                '<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>' +
+                                '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+                                '<span aria-hidden="true">&times;</span>' +
+                                '</button>' +
+                                '</div>' +
+                                '<div class="modal-body">' + response.response[i].id +
+                                '<div class="col-md-12">' +
+                                '<input type="file" class="form_control" name="image">' +
+                                '</div>' +
+                                '</div>' +
+                                '<div class="modal-footer">' +
+                                '<button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>' +
+                                '<button type="submimt" value="Upload" class="btn btn-primary">Yükle</button>' +
+                                '</div>' +
+                                '</div>' +
+                                '</form>' +
+                                '</div>' +
+                                '</div>' +
+                                '<a href="foto-delete/' + response.response[i].id + '" title="Sil" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a>' +
+                                '</td>' +
+                                '</tr>');
+                        }
+                    }
+                });
+            });
+
         </script>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </div>
     </div>
 

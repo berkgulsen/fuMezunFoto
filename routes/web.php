@@ -26,6 +26,7 @@ Route::post('/homepage/list','App\Http\Controllers\front\HomepageController@show
 
 Route::get('subDepartment',[adminController::class,'getSub'])->name('subs');
 Route::get('department',[adminController::class,'getDepartment'])->name('departments');
+Route::get('fotos',[adminController::class,'getFotos'])->name('fotos');     //urlnin hangi fonksiyona yönlendireceğini seçiyorum
 
 Auth::routes();
 
