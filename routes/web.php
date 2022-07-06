@@ -51,7 +51,7 @@ Route::middleware(['foto'])->group(function (){
 
 Route::middleware(['auth','isAdmin:1'])->group(function (){
     Route::get('dashboard', [AdminController::class,'index']);
-    Route::get('/admin-listele', [AdminController::class,'list']);
+    Route::get('/admin-listele', [AdminController::class,'list'])->name('admin.listele');
     Route::get('/admin-ekle', [FrontendController::class,'list']);
     Route::post('/admin-ekle-onay', [AdminController::class,'insert']);
     Route::get('admin-düzenle/{id}', [AdminController::class, 'edit']);

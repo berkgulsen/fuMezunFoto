@@ -41,8 +41,9 @@ class adminController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
+        $user->role_as = $request->role_as;
         $user->update();
-        return redirect('dashboard')->with('status',"Admin güncellendi!");
+        return redirect('admin-listele')->with('status',"Admin güncellendi!");
     }
 
     public function delete($id){
@@ -61,9 +62,9 @@ class adminController extends Controller
         $departments=Department::where('sub_id',$id)->get();
         return response()->json(['response' => $departments]);
     }
-    public function getFotos(Request $request){                     //urlnin bizi yönlendirdiği fonksiyon ve parantez içinde olanlar da fonksiyonun istediği değişkenler
-        $fotos=ImagePath::whereDepartment_id($request->depid)       //filtreleme işlemlerini yapıp fotos değişkenine sonucu atıyoruz
+    public function getFotos(Request $request){
+        $fotos=ImagePath::whereDepartment_id($request->depid)
                         ->whereYear_id($request->yilid)->get();
-        return response()->json(['response' => $fotos]);            //filtreleme sonrası asıl sayfamıza fotoğrafları geri döndürüyoruz
+        return response()->json(['response' => $fotos]);
     }
 }
