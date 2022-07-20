@@ -21,16 +21,27 @@
                     <p>Fotoğraf Sil</p>
                 </a>
             </li>
-            @if(auth()->user()->role_as == 1)
+            @role('superAdmin')
             <li class="nav-item @if(Request::segment(1)=='admin-listele') active @endif ">
                 <a class="nav-link" href="{{url('admin-listele')}}">
                     <i class="material-icons">person</i>
                     <p>Admin Listele</p>
                 </a>
             </li>
-            @endif
+            <li class="nav-item @if(Request::segment(2)=='roles') active @endif ">
+                <a class="nav-link" href="{{ route('admin.roles.index') }}">
+                    <i class="material-icons">person</i>
+                    <p>Roller</p>
+                </a>
+            </li>
+            <li class="nav-item @if(Request::segment(2)=='permissions') active @endif ">
+                <a class="nav-link" href="{{ route('admin.permissions.index') }}">
+                    <i class="material-icons">person</i>
+                    <p>İzinler</p>
+                </a>
+            </li>
+            @endrole
             <li class="nav-item @if(Request::segment(1)=='kullanıcı-bilgi') active @endif">
-
                 <a class="nav-link" href="{{url('kullanıcı-bilgi/'.auth()->user()->id)}}">
                     <i class="material-icons">settings</i>
                     <p>Kullanıcı Bilgileri</p>

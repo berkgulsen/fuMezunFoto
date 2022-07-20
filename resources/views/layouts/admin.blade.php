@@ -25,6 +25,14 @@
     <div class="main-panel">
         @include('layouts.inc.adminnav')
         <div class="content">
+            @if(Session::has('message'))
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <strong>{{ Session::get('message') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             @yield('content')
         </div>
         @include('layouts.inc.adminfooter')

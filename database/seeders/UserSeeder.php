@@ -14,12 +14,12 @@ class UserSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {/*
         DB::table('users')->insert([
             'name'=>'admin',
             'email'=>'admin@test.com',
             'password'=>bcrypt('password'),
-            'role_as'=>1,
-        ]);
+            'role_as'=>0,
+        ])->assignRole('admin');*/
     }
 }
