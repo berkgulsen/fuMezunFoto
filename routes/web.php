@@ -64,5 +64,7 @@ Route::middleware(['auth','role:admin|superAdmin'])->group(function (){
 
 Route::middleware(['auth','role:superAdmin'])->name('admin.')->prefix('admin')->group(function (){
     Route::resource('/roles',RoleController::class);
+    Route::post('/roles/{role}/permissions',[RoleController::class,'givePermission'])->name('roles.permissions');
+    Route::delete('/roles/{role}/permissions/{permission}',[RoleController::class,'revokePermission'])->name('roles.permissions.revoke');
     Route::resource('/permissions',PermissionController::class);
 });
