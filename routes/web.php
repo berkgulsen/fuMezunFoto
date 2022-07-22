@@ -36,6 +36,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['auth','role:superAdmin|admin'])->group(function (){
     Route::get('admin-panel', [FrontendController::class,'adminIndex']);
+    Route::get('dashboard', [AdminController::class,'index']);
 });
 
 Route::middleware(['foto'])->group(function (){
@@ -51,8 +52,7 @@ Route::middleware(['foto'])->group(function (){
 
 });
 
-Route::middleware(['auth','role:admin|superAdmin'])->group(function (){
-    Route::get('dashboard', [AdminController::class,'index']);
+Route::middleware(['auth','role:superAdmin'])->group(function (){
     Route::get('/admin-listele', [AdminController::class,'list'])->name('admin.listele');
     Route::get('/admin-ekle', [FrontendController::class,'list']);
     Route::post('/admin-ekle-onay', [AdminController::class,'insert']);
@@ -66,7 +66,15 @@ Route::middleware(['auth','role:superAdmin'])->name('admin.')->prefix('admin')->
     Route::resource('/roles',RoleController::class);
     Route::post('/roles/{role}/permissions',[RoleController::class,'givePermission'])->name('roles.permissions');
     Route::delete('/roles/{role}/permissions/{permission}',[RoleController::class,'revokePermission'])->name('roles.permissions.revoke');
+
     Route::resource('/permissions',PermissionController::class);
     Route::post('/permissions/{permission}/roles',[PermissionController::class,'assignRole'])->name('permissions.roles');
     Route::delete('/permissions/{permission}/roles/{role}',[PermissionController::class,'removeRole'])->name('permissions.roles.remove');
+
+
+    Route::post('/users/{user}/roles',[AdminController::class,'assignRole'])->name('users.roles');
+    Route::delete('/users/{user}/roles/{role}',[AdminController::class,'removeRole'])->name('users.roles.remove');
+
+    Route::post('/users/{user}/permissions',[AdminController::class,'givePermission'])->name('users.permissions');
+    Route::delete('/users/{user}/permissions/{permission}',[AdminController::class,'revokePermission'])->name('users.permissions.revoke');
 });
