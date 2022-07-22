@@ -39,7 +39,7 @@ Route::middleware(['auth','role:superAdmin|admin'])->group(function (){
     Route::get('dashboard', [AdminController::class,'index']);
 });
 
-Route::middleware(['foto'])->group(function (){
+Route::middleware(['foto','auth','role:superAdmin|admin'])->group(function (){
     Route::get('foto-ekle-akademik', [FrontendController::class,'fotoIndex']);
     Route::get('foto-sil', [FrontendController::class,'fotoDelete'])->name('foto-sil');
     Route::post('/foto-sil-onay', [FotoController::class,'show']);
